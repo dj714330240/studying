@@ -73,14 +73,9 @@ public class OrdersController {
         Map<String,Object> data = new HashMap<>();
         User user = userService.findByUserName(userName);
         if (null != user) {
-            int count = ordersService.insertOrders(user.getId(), price, content);
-            if (count > 0){
-                data.put("message", "添加成功");
-                data.put("code", "0");
-            } else {
-                data.put("message", "添加成功");
-                data.put("code", "0");
-            }
+            ordersService.insertOrders(user.getId(), price, content);
+            data.put("message", "添加成功");
+            data.put("code", "0");
         } else {
             data.put("code", "1");
             data.put("message", "用户不存在！");

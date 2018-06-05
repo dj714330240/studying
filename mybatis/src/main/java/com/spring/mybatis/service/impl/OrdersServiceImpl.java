@@ -5,6 +5,7 @@ import com.spring.mybatis.model.Orders;
 import com.spring.mybatis.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @ClassName OrdersServiceImpl
@@ -24,9 +25,18 @@ public class OrdersServiceImpl implements OrdersService {
         return ordersDao.findOrdersByUserId(userId);
     }
 
+    /**
+     * 添加事物管理--报错--代码回滚
+     * @param userId
+     * @param price
+     * @param content
+     * @return
+     */
     @Override
-    public int insertOrders(Long userId, Double price, String content) {
-        return ordersDao.insertOrders(userId, price, content);
+    @Transactional
+    public void insertOrders(Long userId, Double price, String content) {
+        ordersDao.insertOrders(userId, price, content);
+//        int max = 2/0;    //正常情况下，代码执行到这报错，但是已经走了inserOrders方法。加上事物管理，他会把inserOrders方法回滚，你把注释放开看看
     }
 
     @Override

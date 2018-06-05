@@ -6,7 +6,7 @@ public interface OrdersService {
 
     Orders findOrdersByUserId(Long userId);
 
-    int insertOrders(Long userId, Double price, String content);
+    void insertOrders(Long userId, Double price, String content);
 
     int deleteOrders(Long id);
 
