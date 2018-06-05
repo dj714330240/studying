@@ -31,6 +31,11 @@ public class OrdersController {
     @Autowired
     private OrdersServiceImpl ordersService;
 
+    /**
+     *查询用户下的订单
+     * @param userName 传一个userName--@Param-课直接接收前端传递过来的值，取代传统的request.getParameter();
+     * @return
+     */
     @GetMapping(value = "/findOrdersByUserId")
     @ResponseBody
     public Object findOrdersByUserId(@Param("userName") String userName){
@@ -55,6 +60,13 @@ public class OrdersController {
         return data;
     }
 
+    /**
+     * 给用户插入一条订单
+     * @param userName
+     * @param price
+     * @param content
+     * @return
+     */
     @GetMapping(value = "/insertOrders")
     @ResponseBody
     public Object insertOrders(@Param("userName") String userName,@Param("price") Double price,@Param("content") String content){
@@ -76,6 +88,11 @@ public class OrdersController {
         return data;
     }
 
+    /**
+     * 删除订单
+     * @param orderId
+     * @return
+     */
     @GetMapping(value = "/deleteOrders")
     @ResponseBody
     public Object deleteOrders(@Param("id") Long orderId){
@@ -85,6 +102,12 @@ public class OrdersController {
         return data;
     }
 
+    /**
+     * 更新订单数据
+     * @param userName
+     * @param content
+     * @return
+     */
     @GetMapping(value = "/updateOrders")
     @ResponseBody
     public Object updateOrders(@Param("userName")String userName, @Param("content") String content){

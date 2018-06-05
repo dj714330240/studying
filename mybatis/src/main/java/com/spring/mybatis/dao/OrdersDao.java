@@ -3,6 +3,9 @@ package com.spring.mybatis.dao;
 import com.spring.mybatis.model.Orders;
 import org.apache.ibatis.annotations.*;
 
+/**
+ * 直接在Java里面写Sql
+ */
 @Mapper
 public interface OrdersDao {
 

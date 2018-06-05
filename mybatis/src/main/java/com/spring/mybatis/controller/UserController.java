@@ -25,6 +25,13 @@ public class UserController {
     @Autowired
     private UserServiceImpl userService;
 
+    /**
+     * 添加一个用户
+     * @param userName
+     * @param password
+     * @param email
+     * @return
+     */
     @GetMapping(value = "/inserUser")
     @ResponseBody
     public Object inserUser(@Param("userName") String userName,@Param("password") String password,@Param("email") String email){
@@ -39,6 +46,11 @@ public class UserController {
         return data;
     }
 
+    /**
+     * 根据用户名查询用户
+     * @param userName
+     * @return
+     */
     @GetMapping(value = "/findByUserName")
     @ResponseBody
     public  Object findByUserName(@Param("userName")String userName){
@@ -55,6 +67,11 @@ public class UserController {
         return data;
     }
 
+    /**
+     * 根据Id删除用户
+     * @param id
+     * @return
+     */
     @GetMapping(value = "/deleteUserById")
     @ResponseBody
     public Object deleteUserById(@Param("id")Long id){
@@ -65,6 +82,12 @@ public class UserController {
         return data;
     }
 
+    /**
+     * 根据用户名更新密码
+     * @param password
+     * @param userName
+     * @return
+     */
     @GetMapping(value = "/updatePassword")
     @ResponseBody
     public Object updatePassword(@Param("password")String password,@Param("userName")String userName){
