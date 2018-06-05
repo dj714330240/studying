@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 指定dao -->
+<mapper namespace="com.spring.mybatis.dao.UserDao">
+    <!--  id指定方法名  parameterType指定参数类型 resultType返回参数类型 #{userName}对应User表里面的字段N要大写不然映射报错   -->
+    <select id="findByUserName" parameterType="String" resultType="com.spring.mybatis.model.User">
+        select * from s_user where user_name = #{userName}
+    </select>
+
+    <!--  id指定方法名  parameterType指定参数类型 useGeneratedKeys自动生成主键 keyProperty主键id   -->
+    <insert id="insertUser" parameterType="com.spring.mybatis.model.User" useGeneratedKeys="true" keyProperty="id">
+        insert into s_user(user_name, password,email) VALUES(#{userName}, #{password},#{email})
+    </insert>
+
+    <delete id="deleteUserById" parameterType="Long">
+        delete  from s_user where id = #{id}
+    </delete>
+
+    <update id="updatePassword" parameterType="com.spring.mybatis.model.User">
+        update s_user set password = #{password} where id = #{id}
+    </update>
+
+</mapper>
